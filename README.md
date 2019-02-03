@@ -19,3 +19,8 @@ Here are a few calls that this package provides. For more detailed information, 
 ```
 nomics.get_currencies()
 ```
+
+* [get_prices](http://docs.nomics.com/#operation/getPrices) - Returns current prices for all currencies
+```
+nomics.get_prices()
+```

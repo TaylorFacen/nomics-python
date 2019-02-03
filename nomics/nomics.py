@@ -20,4 +20,16 @@ class Nomics:
         
             return currency_ids
         else:
-            print(r.text)
+            return r.text
+
+    def get_prices(self):
+        """Returns a list of dictionaries of currencies and current price"""
+
+        url = "https://api.nomics.com/v1/prices?key={}".format(self.key)
+        
+        r = requests.get(url)
+
+        if r.status_code == 200:
+            return r.json()
+        else:
+            return r.text
