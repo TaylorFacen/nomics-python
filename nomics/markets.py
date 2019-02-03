@@ -1,6 +1,6 @@
 import requests
 
-def get_markets(key, **kwargs):
+def get_markets(key, exchange = None, base = None, quote = None):
     """Returns information on the exchanges and markets that Nomics supports, in addition to the Nomics currency identifiers for the base and quote currency
     
     Optional parameters:
@@ -15,12 +15,12 @@ def get_markets(key, **kwargs):
 
     """
     url = "https://api.nomics.com/v1/markets?key={}".format(key)
-    if 'exchange' in kwargs:
-        url += "&exchange={}".format(kwargs['exchange'])
-    if 'base' in kwargs:
-        url += "&base={}".format(kwargs['base'])
-    if 'quote' in kwargs:
-        url += "&quote={}".format(kwargs['quote'])
+    if exchange:
+        url += "&exchange={}".format(exchange)
+    if base:
+        url += "&base={}".format(base)
+    if quote:
+        url += "&quote={}".format(quote)
 
     r = requests.get(url)
     
