@@ -2,7 +2,7 @@ import requests
 import json
 
 from .currencies import get_currencies, get_prices
-from .markets import get_markets
+from .markets import get_markets, get_market_cap_history
 
 class Nomics:
     
@@ -21,3 +21,6 @@ class Nomics:
     # Markets
     def get_markets(self, **kwargs):
         return get_markets(self.key, **kwargs)
+
+    def get_market_cap_history(self, start, **kwargs):
+        return get_market_cap_history(self.key, start, **kwargs)

@@ -1,4 +1,5 @@
 import requests
+from datetime import datetime
 
 def get_markets(key, exchange = None, base = None, quote = None):
     """Returns information on the exchanges and markets that Nomics supports, in addition to the Nomics currency identifiers for the base and quote currency
@@ -28,3 +29,21 @@ def get_markets(key, exchange = None, base = None, quote = None):
         return r.json()
     else:
         return r.text
+
+def get_market_cap_history(key, start, end = None):
+    start_formatted = datetime.strptime(start, '%Y-%m-%d').strftime("%FT%TZ").replace(':', '%3A')
+
+    url = "https://api.nomics.com/v1/market-cap/history?key={}&start={}".format(key, start_formatted)
+    
+    if end:
+        end_formatted = datetime.strptime(end, '%Y-%m-%d').strftime("%FT%TZ").replace(':', '%3A')
+
+        url += "&end={}".format(end_formatted)
+
+    r = requests.get(url)
+    
+    if r.status_code == 200:
+        return r.json()
+    else:
+        return r.text
+
