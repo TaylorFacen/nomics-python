@@ -7,7 +7,7 @@ Although the api call descriptions are from the official documentation, this is 
 ## Contents
 * [Getting Started](#getting-started)
 * [Code Examples](#code-examples)
-* [Change Log](Changelog)
+* [Change Log](Changelog.md)
 
 
 ## Getting Started
