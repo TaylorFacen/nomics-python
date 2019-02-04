@@ -25,10 +25,10 @@ class Nomics:
 
     def get_market_cap_history(self, start, **kwargs):
         return get_market_cap_history(self.key, start, **kwargs)
+
+    def get_dashboard(self):
+        return get_dashboard(self.key)
     
     # Candles
     def get_candles(self, interval, **kwargs):
         return get_candles(self.key, interval, **kwargs)
-
-    def get_dashboard(self):
-        return get_dashboard(self.key)

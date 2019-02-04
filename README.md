@@ -4,6 +4,11 @@ A Python wrapper for the [Nomics API](http://docs.nomics.com/)
 ## Disclaimer
 Although the api call descriptions are from the official documentation, this is an unofficial API wrapper. 
 
+## Contents
+* [Getting Started](#getting-started)
+* [Code Examples](#code-examples)
+* [Change Log](Changelog)
+
 
 ## Getting Started
 Before using the Nomics API, sign up for a free API key [here](https://p.nomics.com/cryptocurrency-bitcoin-api).
@@ -15,8 +20,19 @@ api_key = "This-Is-A-Fake-Key-123"
 nomics = nomics.Nomics(api_key)
 ```
 
-## Sample Calls
+## Code Examples
 Here are a few calls that this package provides. For more detailed information, please see the associated Nomics API documentation. 
+
+* [Prices](#prices)
+  * get_currencies
+  * get_prices
+* [Markets](#markets)
+  * get_markets
+  * get_market_cap_history
+  * get_dashboard
+* [Candles](#candles)
+  * get_candles
+
 
 ### Prices
 
