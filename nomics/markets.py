@@ -57,3 +57,13 @@ def get_market_cap_history(key, start, end = None):
         return r.json()
     else:
         return r.text
+        
+def get_dashboard(key):
+    """Returns a high level view of the current state of the market."""
+    url = "https://api.nomics.com/v1/dashboard?key={}".format(key)
+
+    r = requests.get(url)
+    if r.status_code == 200:
+        return r.json()
+    else:
+        return r.text

@@ -114,6 +114,43 @@ Output
 ]
 ```
 
+* [get_dashboard](http://docs.nomics.com/#operation/getDashboard) - Returns a high level view of the current state of the market.
+
+Input
+
+No parameters
+```
+nomics.get_dashboard()
+```
+Output
+```
+[
+    ... {
+        'currency': 'BTC', 
+        'dayOpen': '3511.99577900', 
+        'dayVolume': '99792173.77561706', 
+        'dayOpenVolume': '110587082.15678930', 
+        'weekOpen': '3456.85794661', 
+        'weekVolume': '1239234754.79406981', 
+        'weekOpenVolume': '1148015971.33757139', 
+        'monthOpen': '3858.41231750', 
+        'monthVolume': '6443576407.76799557', 
+        'monthOpenVolume': '11701713847.30718734', 
+        'yearOpen': '8164.13564882', 
+        'yearVolume': '234521217323.90533474', 
+        'yearOpenVolume': '324699677804.24397743', 
+        'close': '3454.32472322', 
+        'high': '24436.29525153', 
+        'highTimestamp': '2018-01-05T00:00:00Z', 
+        'highExchange': 'bithumb', 
+        'highQuoteCurrency': 'KRW', 
+        'availableSupply': '17517750', 
+        'maxSupply': '21000000'
+    }, ...
+]
+```
+
+
 ### Candles
 * get_candles - Combines the [Aggregated OHLCV](http://docs.nomics.com/#operation/getCandles) and [Exchange OHLCV](http://docs.nomics.com/#operation/getExchangeCandles) APIs.
 
