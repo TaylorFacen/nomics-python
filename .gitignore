@@ -1,4 +1,9 @@
 # This file is used for testing during development
 test.py
+*.egg-info
+.pypirc
 
 __pycache__/
+build/
+dist/
+
