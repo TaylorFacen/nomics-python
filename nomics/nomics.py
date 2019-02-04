@@ -3,6 +3,7 @@ import json
 
 from .currencies import get_currencies, get_prices
 from .markets import get_markets, get_market_cap_history
+from .candles import get_candles
 
 class Nomics:
     
@@ -24,3 +25,7 @@ class Nomics:
 
     def get_market_cap_history(self, start, **kwargs):
         return get_market_cap_history(self.key, start, **kwargs)
+    
+    #Candles
+    def get_candles(self, interval, **kwargs):
+        return get_candles(self.key, interval, **kwargs)

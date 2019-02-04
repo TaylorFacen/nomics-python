@@ -113,3 +113,79 @@ Output
         'market_cap': '128268414469'}
 ]
 ```
+
+### Candles
+* get_candles - Combines the [Aggregated OHLCV](http://docs.nomics.com/#operation/getCandles) and [Exchange OHLCV](http://docs.nomics.com/#operation/getExchangeCandles) APIs.
+
+Aggregated Candles
+
+Input
+
+Required Parameters:
+* interval: Time interval of the candle (Has to be one of the following values: "1d", "4h", "1h", "30m", "5m", "1m")
+* currency: Currency ID
+
+Optional Parameters:
+* start: Start time of the interval in isoformat
+* end: End time of the interval in isoformat
+```
+nomics.get_candles(interval = "1d", currency = "BTC", start = "2018-01-01", end = "2018-01-03")
+```
+Output
+```
+[
+    {
+        'timestamp': '2018-01-01T00:00:00Z', 
+        'low': '13493.21831', 
+        'open': '14071.16898', 
+        'close': '13549.53608', 
+        'high': '13793.07961', 
+        'volume': '1490453543'
+    }, {
+        'timestamp': '2018-01-02T00:00:00Z', 
+        'low': '14421.69036', 
+        'open': '14275.23107', 
+        'close': '14789.29684', 
+        'high': '14416.79422', 
+        'volume': '3048511009'
+    }, ...
+]
+```
+
+Exchange Candles
+
+Input
+
+Required Parameters:
+* interval: Time interval of the candle (Has to be one of the following values: "1d", "4h", "1h", "30m", "5m", "1m")
+* exchange: Exchange ID
+* market: Market ID
+
+Optional Parameters:
+* start: Start time of the interval in isoformat
+* end: End time of the interval in isoformat
+```
+nomics.get_candles(interval = "1d", exchange = "binance", market = "BTCUSDT", start = "2018-01-01", end = "2018-01-03")
+```
+Output
+```
+[
+    {
+        'timestamp': '2018-01-01T00:00:00Z', 
+        'low': '12750.00000000', 
+        'open': '13715.65000000', 
+        'close': '13380.00000000', 
+        'high': '13818.55000000', 
+        'volume': '8609.91584400', 
+        'num_trades': '99182'
+    }, {
+        'timestamp': '2018-01-02T00:00:00Z', 
+        'low': '12890.02000000', 
+        'open': '13382.16000000', 
+        'close': '14675.11000000', 
+        'high': '15473.49000000', 
+        'volume': '20078.09211100', 
+        'num_trades': '165673'
+    }, ...
+]
+```

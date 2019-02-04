@@ -31,6 +31,17 @@ def get_markets(key, exchange = None, base = None, quote = None):
         return r.text
 
 def get_market_cap_history(key, start, end = None):
+    """Returns information on the exchanges and markets that Nomics supports, in addition to the Nomics currency identifiers for the base and quote currency
+    
+    Required parameter:
+        - start: Start time of the interval in isoformat
+        Example: "2018-01-01"
+
+    Optional parameters:
+        - end: End time of the interval in isoformat
+        Example: "2018-01-03"
+
+    """
     start_formatted = datetime.strptime(start, '%Y-%m-%d').strftime("%FT%TZ").replace(':', '%3A')
 
     url = "https://api.nomics.com/v1/market-cap/history?key={}&start={}".format(key, start_formatted)
@@ -46,4 +57,3 @@ def get_market_cap_history(key, start, end = None):
         return r.json()
     else:
         return r.text
-
