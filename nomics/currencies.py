@@ -53,3 +53,19 @@ def get_supplies_interval(url, start, end = None):
     else:
         return r.text
 
+def get_currencies_interval(url, start, end = None):
+    """Open and close prices and volume for all currencies between a customizable time range."""
+
+    params = {
+        'start': datetime.strptime(start, '%Y-%m-%d').strftime("%FT%TZ")
+    }
+    if end:
+        params['end'] = datetime.strptime(end, '%Y-%m-%d').strftime("%FT%TZ")
+
+    r = requests.get(url, params = params)
+
+    if r.status_code == 200:
+        return r.json()
+    else:
+        return r.text
+

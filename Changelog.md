@@ -11,5 +11,8 @@
 * get_candles
 
 ## 1.1.0 
+
+### Added
 * get_all_time_highs
 * get_supplies_interval
+* get_currencies_interval

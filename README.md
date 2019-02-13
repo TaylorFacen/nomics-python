@@ -135,6 +135,38 @@ Output
 ...]
 ```
 
+* [get_currencies_interval](http://docs.nomics.com/#operation/getCurrenciesInterval) - Open and close prices and volume for all currencies between a customizable time range.
+
+Input
+
+Required Parameters:
+* start: Start time of the interval in isoformat
+
+Optional Parameters:
+* end: End time of the interval in isoformat
+
+Output
+```
+[...
+    {
+        "currency": "ZRC",
+        "volume": "324545.48154",
+        "open": "1.02354",
+        "open_timestamp": "2018-04-14T00:00:00Z",
+        "close": "0.82488",
+        "close_timestamp": "2018-05-14T00:00:00Z"
+    },
+    {
+        "currency": "ZRX",
+        "volume": "637316758.59933",
+        "open": "0.69419",
+        "open_timestamp": "2018-04-14T00:00:00Z",
+        "close": "1.55195",
+        "close_timestamp": "2018-05-14T00:00:00Z"
+    },
+...]
+```
+
 ### Markets
 
 * [get_markets](http://docs.nomics.com/#operation/getMarkets) - Returns information on the exchanges and markets that Nomics supports, in addition to the Nomics currency identifiers for the base and quote currency.
