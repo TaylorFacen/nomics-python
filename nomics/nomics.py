@@ -1,7 +1,7 @@
 import requests
 import json
 
-from .currencies import get_currencies, get_prices, get_all_time_highs
+from .currencies import get_currencies, get_prices, get_all_time_highs, get_supplies_interval
 from .markets import get_markets, get_market_cap_history, get_dashboard
 from .candles import get_candles
 
@@ -26,6 +26,10 @@ class Nomics:
     def get_all_time_highs(self):
         url = self.get_url('currencies/highs')
         return get_all_time_highs(url)
+
+    def get_supplies_interval(self, start, **kwargs):
+        url = self.get_url('supplies/interval')
+        return get_supplies_interval(url, start, **kwargs)
 
     # Markets
     def get_markets(self, **kwargs):

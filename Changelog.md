@@ -12,3 +12,4 @@
 
 ## 1.1.0 
 * get_all_time_highs
+* get_supplies_interval

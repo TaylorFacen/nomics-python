@@ -101,6 +101,40 @@ Output
 ...]
 ```
 
+* [get_supplies_interval](http://docs.nomics.com/#operation/getSuppliesInterval) - Open and close supply information for all currencies between a customizable time interval.
+
+Input
+
+Required Parameters:
+* start: Start time of the interval in isoformat
+
+Optional Parameters:
+* end: End time of the interval in isoformat
+
+Output
+```
+[...
+    {
+        "currency": "ZCL",
+        "open_available": "3733950.0",
+        "open_max": "21000000.0",
+        "open_timestamp": "2018-04-13T23:59:09Z",
+        "close_available": "3957150.0",
+        "close_max": "21000000.0",
+        "close_timestamp": "2018-05-14T23:59:09Z"
+    },
+    {
+        "currency": "ZEC",
+        "open_available": "3695469.0",
+        "open_max": null,
+        "open_timestamp": "2018-04-13T23:59:09Z",
+        "close_available": "3917444.0",
+        "close_max": null,
+        "close_timestamp": "2018-05-14T23:59:09Z"
+    },
+...]
+```
+
 ### Markets
 
 * [get_markets](http://docs.nomics.com/#operation/getMarkets) - Returns information on the exchanges and markets that Nomics supports, in addition to the Nomics currency identifiers for the base and quote currency.

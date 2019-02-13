@@ -1,4 +1,5 @@
 import requests
+from datetime import datetime
 
 def get_currencies(url):
     """Returns a list of Nomics currency IDs"""
@@ -35,3 +36,20 @@ def get_all_time_highs(url):
         return r.json()
     else:
         return r.text
+
+def get_supplies_interval(url, start, end = None):
+    """Open and close supply information for all currencies between a customizable time interval."""
+
+    params = {
+        'start': datetime.strptime(start, '%Y-%m-%d').strftime("%FT%TZ")
+    }
+    if end:
+        params['end'] = datetime.strptime(end, '%Y-%m-%d').strftime("%FT%TZ")
+
+    r = requests.get(url, params = params)
+
+    if r.status_code == 200:
+        return r.json()
+    else:
+        return r.text
+
