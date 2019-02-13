@@ -72,6 +72,35 @@ Output
 ]
 ```
 
+* [get_all_time_highs](http://docs.nomics.com/#operation/getCurrencyHighs) - Returns all time high information for all currencies.
+
+Input
+
+No parameters
+```
+nomics.get_all_time_highs()
+```
+
+Output
+```
+[...
+    {
+        "currency": "ZCASHC",
+        "price": "0.07839",
+        "timestamp": "2018-02-06T00:00:00Z",
+        "exchange": "idex",
+        "quote": "ETH"
+    },
+    {
+        "currency": "ZCL",
+        "price": "251.65683",
+        "timestamp": "2018-01-07T00:00:00Z",
+        "exchange": "bittrex",
+        "quote": "BTC"
+    },
+...]
+```
+
 ### Markets
 
 * [get_markets](http://docs.nomics.com/#operation/getMarkets) - Returns information on the exchanges and markets that Nomics supports, in addition to the Nomics currency identifiers for the base and quote currency.

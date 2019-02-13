@@ -17,12 +17,21 @@ def get_currencies(url):
         return r.text
 
 def get_prices(url):
-        """Returns a list of dictionaries of currencies and current price"""
-    
-        
-        r = requests.get(url)
+    """Returns a list of dictionaries of currencies and current price"""
 
-        if r.status_code == 200:
-            return r.json()
-        else:
-            return r.text
+    r = requests.get(url)
+
+    if r.status_code == 200:
+        return r.json()
+    else:
+        return r.text
+
+def get_all_time_highs(url):
+    """Returns all time high information for all currencies"""
+
+    r = requests.get(url)
+
+    if r.status_code == 200:
+        return r.json()
+    else:
+        return r.text

@@ -9,3 +9,6 @@
 * get_market_cap_history
 * get_dashboard
 * get_candles
+
+## 1.1.0 
+* get_all_time_highs
