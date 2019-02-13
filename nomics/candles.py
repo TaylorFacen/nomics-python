@@ -1,7 +1,7 @@
 import requests
 from datetime import datetime
 
-def get_candles(key, interval, exchange = None, market = None, currency = None, start = None, end = None):
+def get_candles(url, interval, exchange = None, market = None, currency = None, start = None, end = None):
     """Returns open, high, low, close, and volume information for Nomics currencies. If the exchange parameter is omitted, all markets where the given currency is the base currency and the quote currency is a fiat currency, BTC, or ETH are returnd. If the exchance parameter is includes, then then the open, high, low, close, and volume for the specified currency is returned only for that exchange.
 
     Aggregated Candles
@@ -36,24 +36,26 @@ def get_candles(key, interval, exchange = None, market = None, currency = None, 
     """
     if exchange:
         if not market:
-            raise TypeError("Missing required argument: 'market'") 
-        else:
-            url = "https://api.nomics.com/v1/exchange_candles?key={}&interval={}&exchange={}&market={}".format(key, interval, exchange, market)
+            raise TypeError("Missing required argument: 'market'")
     else:
         if not currency:
             raise TypeError("Missing required argument: 'currency'")
-        else:
-            url = "https://api.nomics.com/v1/candles?key={}&interval={}&currency={}".format(key, interval, currency)
-            
-    if start:
-        start_formatted = datetime.strptime(start, '%Y-%m-%d').strftime("%FT%TZ").replace(':', '%3A')
-        url += "&start={}".format(start_formatted)
-                
-    if end:
-        end_formatted = datetime.strptime(end, '%Y-%m-%d').strftime("%FT%TZ").replace(':', '%3A')
-        url += "&end={}".format(end_formatted)
 
-    r = requests.get(url)
+
+    params = {
+        'interval': interval,
+        'exchange': exchange,
+        'market': market,
+        'currency': currency,
+    }
+
+    if start:
+        params['start'] = datetime.strptime(start, '%Y-%m-%d').strftime("%FT%TZ")
+    
+    if end:
+        params['end'] = datetime.strptime(end, '%Y-%m-%d').strftime("%FT%TZ")
+
+    r = requests.get(url, params = params)
     
     if r.status_code == 200:
         return r.json()

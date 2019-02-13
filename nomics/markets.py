@@ -1,7 +1,7 @@
 import requests
 from datetime import datetime
 
-def get_markets(key, exchange = None, base = None, quote = None):
+def get_markets(url, exchange = None, base = None, quote = None):
     """Returns information on the exchanges and markets that Nomics supports, in addition to the Nomics currency identifiers for the base and quote currency
     
     Optional parameters:
@@ -15,22 +15,22 @@ def get_markets(key, exchange = None, base = None, quote = None):
         Example "BTC,ETH,BNB"
 
     """
-    url = "https://api.nomics.com/v1/markets?key={}".format(key)
-    if exchange:
-        url += "&exchange={}".format(exchange)
-    if base:
-        url += "&base={}".format(base)
-    if quote:
-        url += "&quote={}".format(quote)
 
-    r = requests.get(url)
+    # API call parameters
+    params = {
+        'exchange': exchange,
+        'base': base,
+        'quote': quote
+    }
+
+    r = requests.get(url, params = params)
     
     if r.status_code == 200:
         return r.json()
     else:
         return r.text
 
-def get_market_cap_history(key, start, end = None):
+def get_market_cap_history(url, start, end = None):
     """Returns information on the exchanges and markets that Nomics supports, in addition to the Nomics currency identifiers for the base and quote currency
     
     Required parameter:
@@ -42,25 +42,23 @@ def get_market_cap_history(key, start, end = None):
         Example: "2018-01-03"
 
     """
-    start_formatted = datetime.strptime(start, '%Y-%m-%d').strftime("%FT%TZ").replace(':', '%3A')
-
-    url = "https://api.nomics.com/v1/market-cap/history?key={}&start={}".format(key, start_formatted)
     
+    # API Call paramters
+    params = {
+        'start': datetime.strptime(start, '%Y-%m-%d').strftime("%FT%TZ")
+    }
     if end:
-        end_formatted = datetime.strptime(end, '%Y-%m-%d').strftime("%FT%TZ").replace(':', '%3A')
+        params['end'] = datetime.strptime(end, '%Y-%m-%d').strftime("%FT%TZ")
 
-        url += "&end={}".format(end_formatted)
-
-    r = requests.get(url)
+    r = requests.get(url, params = params)
     
     if r.status_code == 200:
         return r.json()
     else:
         return r.text
         
-def get_dashboard(key):
+def get_dashboard(url):
     """Returns a high level view of the current state of the market."""
-    url = "https://api.nomics.com/v1/dashboard?key={}".format(key)
 
     r = requests.get(url)
     if r.status_code == 200:

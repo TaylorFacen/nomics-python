@@ -1,9 +1,8 @@
 import requests
 
-def get_currencies(key):
+def get_currencies(url):
     """Returns a list of Nomics currency IDs"""
 
-    url = "https://api.nomics.com/v1/currencies?key={}".format(key)
     r = requests.get(url)
     
     if r.status_code == 200:
@@ -17,10 +16,9 @@ def get_currencies(key):
     else:
         return r.text
 
-def get_prices(key):
+def get_prices(url):
         """Returns a list of dictionaries of currencies and current price"""
-
-        url = "https://api.nomics.com/v1/prices?key={}".format(key)
+    
         
         r = requests.get(url)
 
