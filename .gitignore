@@ -6,5 +6,5 @@ test.py
 __pycache__/
 build/
 dist/
-ENV/
+venv/
 
