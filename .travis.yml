@@ -1,0 +1,44 @@
+sudo: required
+dist: xenial
+language: python
+virtualenv:
+  system_site_packages: true
+python:
+- '3.5'
+
+install:
+  - pip install -r requirements.txt
+
+jobs:
+  include:
+    - stage: test
+      script: pytest
+      after_script: cd ~
+
+    - stage: deploy-test
+      if: branch = test
+      name: "Deploy to Test PyPi"
+      script: skip
+      deploy:
+        on:
+          branch: test
+          condition: $TRAVIS_BRANCH = test
+        provider: pypi
+        server: https://test.pypi.org/legacy/
+        user: 'TaylorFacen'
+        password:
+          secure: Z2LND76R4SH/tqh8zXImTHSUq40DrrvqdOK53K/RGa0DS3IZFEIaWoyJ5AQFKVwBoW7bjuqBlEvY2fF+70wh7uzQR15/wpQ5fdacmDjj0NsWpvyjKtFfjjD9zOmrc8nyCXMeTgF3x4hg7fiv09BCjMTx/Pteb98HDiqsWvtSRmijEn97621Ru3RFjpSccngWj8JsmauwUogoAn26DZd0x6n2PXCpRksiE1abczi9MphdJjUrFlbAnd8WZdJUbv9O/NkiApXc4vmMHHauJw781uBUMpdGt8eK/fAc4bDKeCXJIpEyslFcUmt20giEfsEs42vpEkOqer0/TmyaKsNaQJd2MYyjzeTibXbLQYVBDlKpky6B1iyog2b+1q2zKUU57cqiR5Ik0VDmtM0B1BwIsF/zLjHv2j5RqihQkgdbsf3TSneh4C3PdE9vLsrO+UheytYdmFLTLeXdNh1bU6lXlLY17sErNlL2mObMZYORjUsMonU+o58gVivl1ESxnh8LTDyeycnuDQSVUtGUHKmFac4T1sQ0xH0vt1nGmaXLGpy729WxuPtEFBmrzxwN4q+/kmt/CYRMxyR3Posrb6XQPAz+Ur8GXc1hjKHWz/k2/1XBkJkni7O8oPLap+d9v5CQyc4WDEwYaIlYNRbnfAqO1CO4t5i+qLawvAyAovnrHXw=
+
+    - stage: deploy-production
+      if: branch = master
+      name: "Deploy to PyPi"
+      script: skip
+      deploy:
+        on:
+          branch: master
+          condition: $TRAVIS_BRANCH = master
+        provider: pypi
+        user: 'TaylorFacen'
+        password:
+          secure: Z2LND76R4SH/tqh8zXImTHSUq40DrrvqdOK53K/RGa0DS3IZFEIaWoyJ5AQFKVwBoW7bjuqBlEvY2fF+70wh7uzQR15/wpQ5fdacmDjj0NsWpvyjKtFfjjD9zOmrc8nyCXMeTgF3x4hg7fiv09BCjMTx/Pteb98HDiqsWvtSRmijEn97621Ru3RFjpSccngWj8JsmauwUogoAn26DZd0x6n2PXCpRksiE1abczi9MphdJjUrFlbAnd8WZdJUbv9O/NkiApXc4vmMHHauJw781uBUMpdGt8eK/fAc4bDKeCXJIpEyslFcUmt20giEfsEs42vpEkOqer0/TmyaKsNaQJd2MYyjzeTibXbLQYVBDlKpky6B1iyog2b+1q2zKUU57cqiR5Ik0VDmtM0B1BwIsF/zLjHv2j5RqihQkgdbsf3TSneh4C3PdE9vLsrO+UheytYdmFLTLeXdNh1bU6lXlLY17sErNlL2mObMZYORjUsMonU+o58gVivl1ESxnh8LTDyeycnuDQSVUtGUHKmFac4T1sQ0xH0vt1nGmaXLGpy729WxuPtEFBmrzxwN4q+/kmt/CYRMxyR3Posrb6XQPAz+Ur8GXc1hjKHWz/k2/1XBkJkni7O8oPLap+d9v5CQyc4WDEwYaIlYNRbnfAqO1CO4t5i+qLawvAyAovnrHXw=
+

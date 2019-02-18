@@ -6,8 +6,9 @@ def nomics():
     # Note; This is a test API key. Not to be used for personal use
 
     api_key = '408cc5e9c771ca59fce4f0f27457a24a'
+    import os, os.path
     import sys
-    sys.path.append("..")
+    sys.path.append(os.path.abspath(os.path.join(os.path.dirname(__file__),'..')))
     from nomics import Nomics
     return Nomics(api_key)
 
