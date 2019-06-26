@@ -1,5 +1,5 @@
 # nomics-python
-A Python wrapper for the [Nomics API](http://docs.nomics.com/)
+A Python wrapper for the [Nomics Crypto Market Data API](http://docs.nomics.com/).  For some context, Nomics is a [crypto market cap and pricing data provider](https://nomics.com).
 
 ## Disclaimer
 Although the api call descriptions are from the official documentation, this is an unofficial API wrapper. 
@@ -11,7 +11,7 @@ Although the api call descriptions are from the official documentation, this is 
 
 
 ## Getting Started
-Before using the Nomics API, sign up for a free API key [here](https://p.nomics.com/cryptocurrency-bitcoin-api).
+Before using the Nomics API, sign up for a [free API key here](https://p.nomics.com/cryptocurrency-bitcoin-api).
 
 Every api call requires this api key. Make sure to use this key when getting started. 
 ```
