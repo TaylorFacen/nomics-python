@@ -25,6 +25,8 @@ Here are a few calls that this package provides. For more detailed information, 
     * get_sparkline
 * [Markets](#markets)
     * get_markets
+* [Volume](#volume)
+    * get_volume_history
 
 ### Currencies
 [get_currencies](https://docs.nomics.com/#operation/getCurrenciesTicker) - Price, volume, market cap, and rank for all currencies across 1 hour, 1 day, 7 day, 30 day, 365 day, and year to date intervals. Current prices are updated every 10 seconds.
@@ -112,3 +114,20 @@ nomics.Markets.get_market_cap_history(
     end = "2018-06-14T00:00:00Z"
 )
 ```
+
+### Volume
+[get_volume_history](https://docs.nomics.com/#operation/getVolumeHistory) - Volume History is the total volume for all cryptoassets in USD at intervals between the requested time period.
+
+Input
+
+Optional Parameters
+* start: Start time of the interval in ISO or RFC3339 format
+* end: End time of the interval in ISO or RFC3339 format
+
+```
+nomics.Volume.get_volume_history(
+    start = "2018-04-14T00:00:00Z",
+    end = "2018-06-14T00:00:00Z"
+)
+```
+
