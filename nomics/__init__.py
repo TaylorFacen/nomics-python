@@ -1,3 +1,5 @@
+name = "nomics-python"
+
 import json
 
 from nomics.api import (
