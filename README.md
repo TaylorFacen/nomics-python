@@ -7,6 +7,7 @@ Although the api call descriptions are from the official documentation, this is 
 ## Contents
 * [Getting Started](#getting-started)
 * [Code Examples](#code-examples)
+* [Change Log](Changelog.md)
 
 ## Getting Started
 Before using the Nomics API, sign up for a free API key [here](https://p.nomics.com/cryptocurrency-bitcoin-api).
