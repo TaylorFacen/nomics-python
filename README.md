@@ -95,3 +95,20 @@ nomics.Markets.get_markets(
     quote = ["BNB"]
 )
 ```
+
+[get_market_cap_history](https://docs.nomics.com/#operation/getMarketCapHistory) - MarketCap History is the total market cap for all cryptoassets at intervals between the requested time period.
+
+Input
+
+Required Parameters
+* start: Start time of the interval in ISO or RFC3339 format
+
+Optional Parameters
+* end: End time of the interval in ISO or RFC3339 format
+
+```
+nomics.Markets.get_market_cap_history(
+    start = "2018-04-14T00:00:00Z",
+    end = "2018-06-14T00:00:00Z"
+)
+```
