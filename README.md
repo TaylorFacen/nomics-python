@@ -21,6 +21,7 @@ nomics = nomics.Nomics("This-Is-A-Fake-Key-123")
 Here are a few calls that this package provides. For more detailed information, please see the associated Nomics API documentation. 
 * [Currencies](#currencies)
     * get_currencies
+    * get_metadata
 
 ### Currencies
 [get_currencies](https://docs.nomics.com/#operation/getCurrenciesTicker) - Price, volume, market cap, and rank for all currencies across 1 hour, 1 day, 7 day, 30 day, 365 day, and year to date intervals. Current prices are updated every 10 seconds.
@@ -38,5 +39,20 @@ nomics.Currencies.get_currencies(
     ids = ["BTC", "ETH"],
     interval = ["1d", "ytd"],
     convert = "EUR"
+)
+```
+
+[get_metadata](https://docs.nomics.com/#operation/getCurrencies) - The currencies endpoint returns all the currencies and their metadata that Nomics supports.
+
+Input
+
+Optional Parameters
+* ids:  Comma separated list of Nomics Currency IDs to filter result rows.
+* attributes: Comma separated list of currency attributes to filter result columns
+
+```
+nomics.Currencies.get_metadata(
+    ids = ["BTC", "ETH"],
+    attributes = ["id", "name", "logo_url"]
 )
 ```

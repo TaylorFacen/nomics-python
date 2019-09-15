@@ -13,3 +13,7 @@ def test_get_currencies(nomics):
     assert isinstance(data, list)
     assert len(data) > 0
     
+def test_get_metadata(nomics):
+    data = nomics.Currencies.get_metadata(ids = ["BTC"])
+    assert isinstance(data, list)
+    assert len(data) > 0

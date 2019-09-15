@@ -31,5 +31,20 @@ class Currencies(API):
 
     def get_metadata(self, **kwargs):
         '''
+        Returns  all the currencies and their metadata that Nomics supports
 
+        :param  [str]   ids:                    Comma separated list of Nomics Currency IDs 
+                                                to filter result rows. Optional
+
+        :param  [str]   attributes:             Comma separated list of currency attributes to filter result columns
+                                                Optional
         '''
+
+        url = self.client.get_url('currencies')
+
+        resp = requests.get(url, params = kwargs)
+
+        if resp.status_code == 200:
+            return resp.json()
+        else:
+            return resp.text
