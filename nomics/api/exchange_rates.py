@@ -46,6 +46,29 @@ class ExchangeRates(API):
         else:
             return resp.text
 
+    def get_interval(self, start, end = None):
+        '''
+        Returns exchange rates for every point in a time range.
+
+        :param  str     start:      Start time of the interval in ISO or RFC3339 format
+
+        :param  str     end:        End time of the interval in ISO or RFC3339 format. If not provided, the current time is used. 
+        '''
+
+        url = self.client.get_url('exchange-rates/interval')
+        params = {
+            'start': format_date(start)
+        }
+
+        if end:
+            params['end'] = format_date(end)
+
+        resp = requests.get(url, params = params)
+
+        if resp.status_code == 200:
+            return resp.json()
+        else:
+            return resp.text
 
 
 
