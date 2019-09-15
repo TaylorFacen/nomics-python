@@ -23,6 +23,7 @@ Here are a few calls that this package provides. For more detailed information, 
     * get_currencies
     * get_metadata
     * get_sparkline
+* [ExchangeRates](#ExchangeRates)
 * [Markets](#markets)
     * get_markets
 * [Volume](#volume)
@@ -77,6 +78,14 @@ nomics.Currencies.get_sparkline(
     start = "2018-04-14T00:00:00Z",
     end = "2018-06-14T00:00:00Z"
 )
+```
+
+### ExchangeRates
+
+[get_exchange_rates](https://docs.nomics.com/#tag/Exchange-Rates) - The exchange rates endpoint returns the current exchange rates used by Nomics to convert prices from markets into USD. This contains Fiat currencies as well as a BTC and ETH quote prices.
+
+```
+nomics.ExchangeRates.get_exchange_rates()
 ```
 
 ### Markets
