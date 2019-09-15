@@ -23,6 +23,8 @@ Here are a few calls that this package provides. For more detailed information, 
     * get_currencies
     * get_metadata
     * get_sparkline
+* [Markets](#markets)
+    * get_markets
 
 ### Currencies
 [get_currencies](https://docs.nomics.com/#operation/getCurrenciesTicker) - Price, volume, market cap, and rank for all currencies across 1 hour, 1 day, 7 day, 30 day, 365 day, and year to date intervals. Current prices are updated every 10 seconds.
@@ -72,5 +74,24 @@ Optional Parameters
 nomics.Currencies.get_sparkline(
     start = "2018-04-14T00:00:00Z",
     end = "2018-06-14T00:00:00Z"
+)
+```
+
+### Markets
+
+[get_markets](https://docs.nomics.com/#operation/getMarkets) - The markets endpoint returns information on the exchanges and markets that Nomics supports, in addition to the Nomics currency identifiers for the base and quote currency.
+
+Input
+
+Optional Paramters
+* exchange: Nomics Exchange ID to filter by
+* base: Comma separated list of base currencies to filter by
+* quote: Comma separated list of quote currencies to filter by
+
+```
+nomics.Markets.get_markets(
+    exchange = "binance",
+    base = ["BTC", "ETH", "LTC"],
+    quote = ["BNB"]
 )
 ```
