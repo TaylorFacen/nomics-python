@@ -12,3 +12,8 @@ def test_get_markets(nomics):
     data = nomics.Markets.get_markets(exchange = 'binance')
     assert isinstance(data, list)
     assert len(data) > 0
+
+def test_get_market_cap_history(nomics):
+    data = nomics.Markets.get_market_cap_history(start = "2018-04-14T00:00:00Z")
+    assert isinstance(data, list)
+    assert len(data) > 0
