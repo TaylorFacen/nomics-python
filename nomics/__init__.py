@@ -4,7 +4,8 @@ import json
 
 from nomics.api import (
     Currencies,
-    Markets
+    Markets,
+    Volume
 )
 
 class Nomics:
@@ -13,6 +14,7 @@ class Nomics:
 
         self.Currencies = Currencies(self)
         self.Markets = Markets(self)
+        self.Volume = Volume(self)
 
     def get_url(self, endpoint):
         return "https://api.nomics.com/v1/{}?key={}".format(endpoint, self.key)
