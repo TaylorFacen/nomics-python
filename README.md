@@ -50,3 +50,18 @@ nomics.Currencies.get_metadata(
     attributes = ["id", "name", "logo_url"]
 )
 ```
+
+[get_sparkline](https://docs.nomics.com/#operation/getCurrenciesSparkline) - The currencies sparkline endpoint returns prices for all currencies within a customizable time interval suitable for sparkline charts.
+
+```python
+# Required arguments
+nomics.Currencies.get_sparkline(
+    start = "2018-04-14T00:00:00Z"
+)
+
+# All arguments
+nomics.Currencies.get_sparkline(
+    start = "2018-04-14T00:00:00Z",
+    end = "2018-06-14T00:00:00Z"
+)
+```

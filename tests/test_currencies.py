@@ -16,3 +16,8 @@ def test_get_metadata(nomics):
     data = nomics.Currencies.get_metadata(ids = ["BTC"])
     assert isinstance(data, list)
     assert len(data) > 0
+
+def test_get_sparkline(nomics):
+    data = nomics.Currencies.get_sparkline(start = "2020-04-01T00:00:00Z")
+    assert isinstance(data, list)
+    assert len(data) > 0
