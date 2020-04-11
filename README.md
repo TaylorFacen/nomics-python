@@ -38,3 +38,15 @@ nomics.Currencies.get_currencies(
     include_transparency = True
 )
 ```
+
+[get_metadata](https://docs.nomics.com/#operation/getCurrencies) - The currencies endpoint returns all the currencies and their metadata that Nomics supports.
+```python
+# Required arguments
+nomics.Currencies.get_metadata()
+
+# All arguments
+nomics.Currencies.get_metadata(
+    ids = ["BTC", "ETH"],
+    attributes = ["id", "name", "logo_url"]
+)
+```
