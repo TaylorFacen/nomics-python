@@ -80,3 +80,25 @@ class Currencies(API):
             return resp.json()
         else:
             return resp.text
+
+    def get_supplies_interval(self, start, end = None):
+        '''
+        Returns the open and close suplly information for all currencies between a customizable time interval
+
+        :param  str start:  Start time of the interval in RFC3339 format
+
+        :param  str end:    End time of the interval in RFC3339 format. If not provided, the current time is used.
+        '''
+
+        url = self.client.get_url('supplies/interval')
+        params = {
+            'start': start,
+            'end': end
+        }
+
+        resp = requests.get(url, params = params)
+
+        if resp.status_code == 200:
+            return resp.json()
+        else:
+            return resp.text
