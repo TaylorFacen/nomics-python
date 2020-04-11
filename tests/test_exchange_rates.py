@@ -8,7 +8,7 @@ from nomics import Nomics
 def nomics():
     return Nomics(NOMICS_API_KEY)
 
-def test_get_volume_history(nomics):
-    data = nomics.Volume.get_volume_history()
+def test_get_exchange_rates(nomics):
+    data = nomics.ExchangeRates.get_exchange_rates()
     assert isinstance(data, list)
     assert len(data) > 0

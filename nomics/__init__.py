@@ -4,6 +4,7 @@ import json
 
 from nomics.api import (
     Currencies,
+    ExchangeRates,
     Markets,
     Volume
 )
@@ -13,6 +14,7 @@ class Nomics:
         self.key = key
 
         self.Currencies = Currencies(self)
+        self.ExchangeRates = ExchangeRates(self)
         self.Markets = Markets(self)
         self.Volume = Volume(self)
 
