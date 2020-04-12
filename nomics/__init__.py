@@ -3,6 +3,7 @@ name = "nomics-python"
 import json
 
 from nomics.api import (
+    Candles,
     Currencies,
     ExchangeRates,
     Markets,
@@ -13,6 +14,7 @@ class Nomics:
     def __init__(self, key):
         self.key = key
 
+        self.Candles = Candles(self)
         self.Currencies = Currencies(self)
         self.ExchangeRates = ExchangeRates(self)
         self.Markets = Markets(self)
