@@ -7,10 +7,17 @@ Although the api call descriptions are from the official documentation, this is 
 ## Getting Started
 Before using the Nomics API, sign up for a [free API key here](https://p.nomics.com/cryptocurrency-bitcoin-api).
 
+To install the wrapper, enter the following into the terminal.
+```bash
+pip install nomics-python
+```
+
 Every api call requires this api key. Make sure to use this key when getting started. 
 ```python
-import nomics
-nomics = nomics.Nomics("This-Is-A-Fake-Key-123")
+from nomics import Nomics
+nomics = Nomics("This-Is-A-Fake-Key-123")
+
+markets = nomics.Markets.get_markets(exchange = 'binance')
 ```
 
 ## Wrapper Wiki
