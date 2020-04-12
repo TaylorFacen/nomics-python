@@ -1,6 +1,9 @@
 *.pyc
 
+/build
+/dist
 /env
+/nomics_python.egg-info
 /__pycache__
 /.pytest_cache
 /.vscode
