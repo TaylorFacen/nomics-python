@@ -22,7 +22,7 @@ class Currencies(API):
 
         url = self.client.get_url('currencies/ticker')
         params = {
-            'ids': ids,
+            'ids': ', '.join(ids), #ids has to be comma separated
             'interval': interval,
             'convert': convert,
             'include-transparency': include_transparency

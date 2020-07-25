@@ -5,7 +5,7 @@ with open("README.md", "r") as fh:
 
 setuptools.setup(
     name = "nomics-python",
-    version = "3.0.3",
+    version = "3.0.4",
     author = "Taylor Facen",
     author_email = "taylor.facen@gmail.com",
     description = "A python wrapper for the Nomics API",

@@ -8,9 +8,9 @@ def nomics():
     return Nomics(NOMICS_API_KEY)
 
 def test_get_currencies(nomics):
-    data = nomics.Currencies.get_currencies(ids = ["BTC"])
+    data = nomics.Currencies.get_currencies(ids = ["BTC", 'ETC'])
     assert isinstance(data, list)
-    assert len(data) > 0
+    assert len(data) == 2
 
 def test_get_metadata(nomics):
     data = nomics.Currencies.get_metadata(ids = ["BTC"])
