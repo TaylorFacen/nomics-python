@@ -8,9 +8,13 @@ def nomics():
     return Nomics(NOMICS_API_KEY)
 
 def test_get_currencies(nomics):
-    data = nomics.Currencies.get_currencies(ids = ["BTC", 'ETC'])
+    data = nomics.Currencies.get_currencies(ids = "BTC, ETC")
     assert isinstance(data, list)
     assert len(data) == 2
+
+def test_get_currencies_params(nomics):
+    with pytest.raises(ValueError):
+        data = nomics.Currencies.get_currencies(ids = ["BTC", 'ETC'])
 
 def test_get_metadata(nomics):
     data = nomics.Currencies.get_metadata(ids = ["BTC"])

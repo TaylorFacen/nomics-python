@@ -3,14 +3,14 @@ import requests
 from .api import API
 
 class Currencies(API):
-    def get_currencies(self, ids = None, interval = None, convert = None, include_transparency = False):
+    def get_currencies(self, ids, interval = None, convert = None, include_transparency = False):
         '''
         Returns price, volume, market cap, and rank for all currencies
 
-        :param  [str]   ids:                    Comma separated list of Nomics Currency IDs 
-                                                to filter result rows. Optional
+        :param  str   ids:                      Comma separated list of Nomics Currency IDs 
+                                                to filter result rows.
 
-        :param  [str]   interval:               Comma separated time interval of the ticker(s). 
+        :param  str   interval:                 Comma separated time interval of the ticker(s). 
                                                 Default is 1d,7d,30d,365d,ytd
 
         :param  str     convert:                Currency to quote ticker price, market cap, and volume values. 
@@ -20,9 +20,15 @@ class Currencies(API):
                                                 Default is false. Only available to paid API plans
         '''
 
+        if type(ids) != str:
+            raise ValueError("ids must be a comma separated string. E.g. ids=BTC,ETH,XRP")
+        if interval and type(interval) != str:
+            raise ValueError("interval must be a comma separated string. E.g. 1d,7d,30d,365d,ytd")
+
+
         url = self.client.get_url('currencies/ticker')
         params = {
-            'ids': ', '.join(ids), #ids has to be comma separated
+            'ids': ids,
             'interval': interval,
             'convert': convert,
             'include-transparency': include_transparency
