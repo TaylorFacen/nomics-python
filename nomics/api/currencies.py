@@ -93,17 +93,20 @@ class Currencies(API):
         else:
             return resp.text
 
-    def get_sparkline(self, start, end = None):
+    def get_sparkline(self, start, ids = None, end = None):
         '''
         Returns prices for all currencies within a customizable time interval suitable for sparkline charts.
 
         :param  str start:  Start time of the interval in RFC3339 format
 
-        :param  str end:    End time of the interval in RFC3339 format. If not provided, the current time is used.
+        :param  str ids:  Comma separated list of Nomics Currency IDs to filter result rows. Optional
+
+        :param  str end:  End time of the interval in RFC3339 format. If not provided, the current time is used.
         '''
 
         url = self.client.get_url('currencies/sparkline')
         params = {
+            'ids': ids,
             'start': start,
             'end': end
         }
