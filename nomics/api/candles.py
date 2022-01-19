@@ -56,6 +56,9 @@ class Candles(API):
         resp = requests.get(url, params = params)
 
         if resp.status_code == 200:
-            return resp.json()
+            if format and format == 'csv':
+                return resp.text
+            else:
+                return resp.json()
         else:
             return resp.text
