@@ -93,28 +93,6 @@ class Currencies(API):
         else:
             return resp.text
 
-    def get_sparkline(self, start, end = None):
-        '''
-        Returns prices for all currencies within a customizable time interval suitable for sparkline charts.
-
-        :param  str start:  Start time of the interval in RFC3339 format
-
-        :param  str end:    End time of the interval in RFC3339 format. If not provided, the current time is used.
-        '''
-
-        url = self.client.get_url('currencies/sparkline')
-        params = {
-            'start': start,
-            'end': end
-        }
-
-        resp = requests.get(url, params = params)
-
-        if resp.status_code == 200:
-            return resp.json()
-        else:
-            return resp.text
-
     def get_supplies_interval(self, start, end = None):
         '''
         Returns the open and close suplly information for all currencies between a customizable time interval
