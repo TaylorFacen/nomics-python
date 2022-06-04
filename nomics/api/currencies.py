@@ -2,10 +2,22 @@ import requests
 
 from .api import API
 
+
 class Currencies(API):
-    def get_currencies(self, ids, interval = None, convert = None, status = None, filter = None, sort = None,
-                       include_transparency = False, per_page = None, page = None):
-        '''
+    def get_currencies(
+        self,
+        ids,
+        interval=None,
+        convert=None,
+        status=None,
+        filter=None,
+        platform_currency=None,
+        sort=None,
+        include_transparency=False,
+        per_page=None,
+        page=None,
+    ):
+        """
         Returns price, volume, market cap, and rank for all currencies
 
         :param  str   ids:                      Comma separated list of Nomics Currency IDs
@@ -29,6 +41,8 @@ class Currencies(API):
                                                 active.
                                                 Available options: "any" "new"
 
+        :param  str   platform_currency:        Filter the results by parent platform.
+
         :param  str   sort:                     How to sort the returned currencies. rank sorts by rank ascending and
                                                 first_priced_at sorts by when each currency was first priced by Nomics
                                                 descending.
@@ -41,74 +55,70 @@ class Currencies(API):
 
         :param  int    page:                    Which page of items to get. Only applicable when per-page is also
                                                 supplied.
-        '''
+        """
 
         if type(ids) != str:
             raise ValueError("ids must be a comma separated string. E.g. ids=BTC,ETH,XRP")
         if interval and type(interval) != str:
-            raise ValueError("interval must be a comma separated string. E.g. 1d,7d,30d,365d,ytd")
+            raise ValueError(
+                "interval must be a comma separated string. E.g. 1d,7d,30d,365d,ytd"
+            )
 
-
-        url = self.client.get_url('currencies/ticker')
+        url = self.client.get_url("currencies/ticker")
         params = {
-            'ids': ids,
-            'interval': interval,
-            'convert': convert,
-            'status': status,
-            'filter': filter,
-            'sort': sort,
-            'include-transparency': include_transparency or None,
-            'per-page': per_page,
-            'page': page
+            "ids": ids,
+            "interval": interval,
+            "convert": convert,
+            "status": status,
+            "filter": filter,
+            "platform_currency": platform_currency,
+            "sort": sort,
+            "include-transparency": include_transparency or None,
+            "per-page": per_page,
+            "page": page,
         }
 
-        resp = requests.get(url, params = params)
+        resp = requests.get(url, params=params)
 
         if resp.status_code == 200:
             return resp.json()
         else:
             return resp.text
 
-    def get_metadata(self, ids = None, attributes = None):
-        '''
+    def get_metadata(self, ids=None, attributes=None):
+        """
         Returns  all the currencies and their metadata that Nomics supports
 
-        :param  [str]   ids:        Comma separated list of Nomics Currency IDs 
+        :param  [str]   ids:        Comma separated list of Nomics Currency IDs
                                     to filter result rows. Optional
 
         :param  [str]   attributes: Comma separated list of currency attributes to filter result columns
                                     Optional
-        '''
+        """
 
-        url = self.client.get_url('currencies')
-        params = {
-            'ids': ids,
-            'attributes': attributes
-        }
+        url = self.client.get_url("currencies")
+        params = {"ids": ids, "attributes": attributes}
 
-        resp = requests.get(url, params = params)
+        resp = requests.get(url, params=params)
 
         if resp.status_code == 200:
             return resp.json()
         else:
             return resp.text
 
-    def get_supplies_interval(self, start, end = None):
-        '''
+    def get_supplies_interval(self, start, end=None):
+        """
         Returns the open and close suplly information for all currencies between a customizable time interval
 
         :param  str start:  Start time of the interval in RFC3339 format
 
         :param  str end:    End time of the interval in RFC3339 format. If not provided, the current time is used.
-        '''
+        """
 
-        url = self.client.get_url('supplies/interval')
-        params = {
-            'start': start,
-            'end': end
-        }
+        url = self.client.get_url("supplies/interval")
+        params = {"start": start, "end": end}
 
-        resp = requests.get(url, params = params)
+        resp = requests.get(url, params=params)
 
         if resp.status_code == 200:
             return resp.json()
