@@ -41,7 +41,7 @@ class Currencies(API):
                                                 active.
                                                 Available options: "any" "new"
 
-        :param  str   platform_currency:        Filter the results by parent platform.
+        :param  str   platform-currency:        Filter the results by parent platform.
 
         :param  str   sort:                     How to sort the returned currencies. rank sorts by rank ascending and
                                                 first_priced_at sorts by when each currency was first priced by Nomics
@@ -71,7 +71,7 @@ class Currencies(API):
             "convert": convert,
             "status": status,
             "filter": filter,
-            "platform_currency": platform_currency,
+            "platform-currency": platform_currency,
             "sort": sort,
             "include-transparency": include_transparency or None,
             "per-page": per_page,
